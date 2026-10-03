@@ -86,29 +86,28 @@ If an external API does not return data, the application displays `N/A` instead 
 
 Install dependencies:
 
-```bash
+bash
 npm install
-```
+
 
 Start the development server:
 
-```bash
+bash
 npm run dev
-```
+
 
 Open the application:
 
-```text
+text
 http://localhost:3000
-```
 
 ## Production Build
 
 To create an optimized production build:
 
-```bash
+bash
 npm run build
-```
+
 
 The production build was tested successfully.
 
@@ -116,9 +115,9 @@ The production build was tested successfully.
 
 The portfolio data is provided through:
 
-```text
+text
 GET /api/portfolio
-```
+
 
 The API fetches market data, combines it with the portfolio information, performs the required calculations, and returns the data to the dashboard.
 
@@ -153,22 +152,3 @@ The Google Sheet used for the market-data values is published as CSV and does no
 * Improve CSV parsing for complex CSV values
 * Add automated tests
 
-````
-
-### Then do this
-
-Save `README.md`.
-
-After saving, **don't run `npm run build` again unless you changed code**. README changes don't affect the application build.
-
-### Next
-
-The remaining required deliverable is the **short technical document**.
-
-Create:
-
-```text
-TECHNICAL_DOCUMENT.md
-````
-
-I'll give you the complete interview-ready technical document next.
