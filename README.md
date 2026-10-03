@@ -1,36 +1,174 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dynamic Portfolio Dashboard
 
-## Getting Started
+A dynamic portfolio tracking dashboard built using Next.js, React, TypeScript and Tailwind CSS.
 
-First, run the development server:
+## Features
+
+* Live stock CMP using Yahoo Finance
+* P/E Ratio using Google Finance
+* Latest Earnings using Google Finance
+* Automatic data refresh every 15 seconds
+* Server-side 15-second caching
+* Manual refresh
+* Portfolio investment calculation
+* Present Value calculation
+* Gain/Loss calculation
+* Portfolio allocation percentage
+* Sector-wise portfolio summary
+* Investment and Gain/Loss charts
+* Search stocks by name, sector or exchange
+* Sort portfolio columns
+* Error handling and N/A handling
+* Responsive portfolio table
+
+## Tech Stack
+
+* Next.js
+* React
+* TypeScript
+* Tailwind CSS
+* Recharts
+* Yahoo Finance
+* Google Finance
+* Google Sheets CSV
+
+## Data Flow
+
+### CMP
+
+Yahoo Finance
+↓
+Next.js API
+↓
+Portfolio Dashboard
+
+### P/E Ratio and Latest Earnings
+
+Google Finance
+↓
+Google Sheet
+↓
+Published CSV
+↓
+Next.js API
+↓
+Portfolio Dashboard
+
+## Calculations
+
+### Investment
+
+Purchase Price × Quantity
+
+### Present Value
+
+CMP × Quantity
+
+### Gain/Loss
+
+Present Value - Investment
+
+### Portfolio Percentage
+
+Investment / Total Investment × 100
+
+## Caching
+
+The portfolio API uses a 15-second in-memory cache.
+
+This reduces repeated requests to external market-data services and helps handle API rate limits.
+
+## Error Handling
+
+If an external API does not return data, the application displays `N/A` instead of breaking the complete dashboard.
+
+## Running the Project
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open the application:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Production Build
 
-## Learn More
+To create an optimized production build:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The production build was tested successfully.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## API Endpoint
 
-## Deploy on Vercel
+The portfolio data is provided through:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```text
+GET /api/portfolio
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The API fetches market data, combines it with the portfolio information, performs the required calculations, and returns the data to the dashboard.
+
+## External Data Limitations
+
+The application depends on external market-data services. External services may have:
+
+* Rate limits
+* Temporary unavailability
+* Missing stock data
+* Delayed market information
+* Symbol differences between exchanges and providers
+
+When data is unavailable, the application safely displays `N/A`.
+
+## Security
+
+No private API credentials are exposed in the client-side application.
+
+The external data fetching is handled through the Next.js server-side API.
+
+The Google Sheet used for the market-data values is published as CSV and does not contain private credentials.
+
+## Future Improvements
+
+* Add a database for persistent caching
+* Add authentication and user-specific portfolios
+* Use a dedicated financial market-data API
+* Add historical price charts
+* Add WebSocket-based real-time market updates
+* Add portfolio import/export
+* Improve CSV parsing for complex CSV values
+* Add automated tests
+
+````
+
+### Then do this
+
+Save `README.md`.
+
+After saving, **don't run `npm run build` again unless you changed code**. README changes don't affect the application build.
+
+### Next
+
+The remaining required deliverable is the **short technical document**.
+
+Create:
+
+```text
+TECHNICAL_DOCUMENT.md
+````
+
+I'll give you the complete interview-ready technical document next.
